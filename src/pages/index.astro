@@ -282,7 +282,7 @@ import Layout from '../layouts/Layout.astro';
   let isStreaming = false;
   let currentSettings: Settings = getSettings();
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function init() {
   // ─── Init ─────────────────────────────────────────────────────────────────────
   initTheme();
   updateThemeIcons();
@@ -877,5 +877,12 @@ import Layout from '../layouts/Layout.astro';
     }
   }
 
-  }); // end DOMContentLoaded
+  } // end init
+
+  // Run immediately — Astro module scripts are deferred, DOM is always ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 </script>
