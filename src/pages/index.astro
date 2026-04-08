@@ -282,6 +282,7 @@ import Layout from '../layouts/Layout.astro';
   let isStreaming = false;
   let currentSettings: Settings = getSettings();
 
+  document.addEventListener('DOMContentLoaded', () => {
   // ─── Init ─────────────────────────────────────────────────────────────────────
   initTheme();
   updateThemeIcons();
@@ -875,4 +876,6 @@ import Layout from '../layouts/Layout.astro';
       sun.classList.remove('hidden');
     }
   }
+
+  }); // end DOMContentLoaded
 </script>
